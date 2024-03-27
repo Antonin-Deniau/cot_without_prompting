@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "cot-without-prompting"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+torch = "^2.2.1"
+transformers = "^4.39.1"
+trl = "^0.8.1"
+unsloth = {git = "https://github.com/unslothai/unsloth.git"}
+python-dotenv = "^1.0.1"
+bitsandbytes = "^0.43.0"
+sentencepiece = "^0.2.0"
+protobuf = "^5.26.0"
+tqdm = "^4.66.2"
+peft = "^0.10.0"
+ipython = "^8.22.2"
+requests = "^2.31.0"
+numpy = "^1.26.4"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
