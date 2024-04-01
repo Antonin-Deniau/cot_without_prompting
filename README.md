@@ -1,4 +1,4 @@
-# Pytorch: COT reasoning without prompting
+# COT reasoning without prompting
 
 A numpy/vllm implementation of the Google research paper "Chain-of-Thought Reasoning Without Prompting"
 
