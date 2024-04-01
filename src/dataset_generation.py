@@ -1,28 +1,29 @@
+from model_config import get_config
 from vllm_model import use_model as use_vllm_model
 from datasets import Dataset, load_from_disk
 from cot_decoding import use_cot_utils
 
-NUM_EXAMPLES = 10  # 15_000
-TOP_K = 12
 
-decode, generate_logits = use_vllm_model("mistralai/Mistral-7B-Instruct-v0.2")
+config = get_config()
+decode, generate_logits = use_vllm_model(config.model)
 greedy_decoding, cot_decoding = use_cot_utils(decode, generate_logits)
 
 
 def q(data: str):
-    return f"<s>[INST] {data} [/INST]"
+    return config.prompt.format(data=data)
+
 
 dataset = load_from_disk("./datasets/intermediate_dataset")
 if type(dataset) != Dataset:
     raise ValueError("Expected a dataset, not a dataset dictionary")
 
-dataset = dataset.select(range(NUM_EXAMPLES))
+dataset = dataset.select(range(config.dataset_size))
 
 
 def generate_answers(example):
     question = q(example["question"])
     greedy_answer = greedy_decoding(question)
-    cot_answer = cot_decoding(question, TOP_K)
+    cot_answer = cot_decoding(question, config.top_k)
 
     example["greedy_answer"] = greedy_answer
     example["cot_answer"] = cot_answer

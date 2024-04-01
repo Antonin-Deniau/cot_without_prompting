@@ -3,6 +3,7 @@ import requests
 import json
 import numpy as np
 from numpy.typing import NDArray
+from model_config import get_config
 
 from workspace_types import (
     TokenLogits,
@@ -20,7 +21,7 @@ def use_model(model_name: str) -> tuple[Decode, GenerateLogits]:
         "Content-Type": "application/json",
     }
 
-    context_size = 8192
+    config = get_config()
     vocab = tokenizer.get_vocab()
 
     def decode(logits: NDArray[np.int_]) -> str:
@@ -46,9 +47,9 @@ def use_model(model_name: str) -> tuple[Decode, GenerateLogits]:
     def generate_logits(prompt: str, limit: int | None, k: int) -> PromptOutput:
         prompt_token_len = len(encode(prompt)) + 1
         final_limit = (
-            min([context_size - prompt_token_len, limit])
+            min([config.context_size - prompt_token_len, limit])
             if limit is not None
-            else context_size - prompt_token_len
+            else config.context_size - prompt_token_len
         )
 
         data = {

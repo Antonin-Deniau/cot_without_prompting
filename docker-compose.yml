@@ -15,4 +15,4 @@ services:
     env_file:
       - .env
     ipc: host
-    command: --max-model-len 8192 --model mistralai/Mistral-7B-Instruct-v0.2 
+    command: --max-model-len $CONTEXT_SIZE --model $MODEL
