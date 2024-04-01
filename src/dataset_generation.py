@@ -12,7 +12,6 @@ greedy_decoding, cot_decoding = use_cot_utils(decode, generate_logits)
 def q(data: str):
     return f"<s>[INST] {data} [/INST]"
 
-# 
 dataset = load_from_disk("./datasets/intermediate_dataset")
 if type(dataset) != Dataset:
     raise ValueError("Expected a dataset, not a dataset dictionary")
