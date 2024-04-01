@@ -754,13 +754,13 @@ test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=7.0)", "pytest-asyncio 
 
 [[package]]
 name = "ipython"
-version = "8.22.2"
+version = "8.23.0"
 description = "IPython: Productive Interactive Computing"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "ipython-8.22.2-py3-none-any.whl", hash = "sha256:3c86f284c8f3d8f2b6c662f885c4889a91df7cd52056fd02b7d8d6195d7f56e9"},
-    {file = "ipython-8.22.2.tar.gz", hash = "sha256:2dcaad9049f9056f1fef63514f176c7d41f930daa78d05b82a176202818f2c14"},
+    {file = "ipython-8.23.0-py3-none-any.whl", hash = "sha256:07232af52a5ba146dc3372c7bf52a0f890a23edf38d77caef8d53f9cdc2584c1"},
+    {file = "ipython-8.23.0.tar.gz", hash = "sha256:7468edaf4f6de3e1b912e57f66c241e6fd3c7099f2ec2136e239e142e800274d"},
 ]
 
 [package.dependencies]
@@ -775,10 +775,11 @@ stack-data = "*"
 traitlets = ">=5.13.0"
 
 [package.extras]
-all = ["ipython[black,doc,kernel,nbconvert,nbformat,notebook,parallel,qtconsole,terminal]", "ipython[test,test-extra]"]
+all = ["ipython[black,doc,kernel,matplotlib,nbconvert,nbformat,notebook,parallel,qtconsole]", "ipython[test,test-extra]"]
 black = ["black"]
 doc = ["docrepr", "exceptiongroup", "ipykernel", "ipython[test]", "matplotlib", "setuptools (>=18.5)", "sphinx (>=1.3)", "sphinx-rtd-theme", "sphinxcontrib-jquery", "stack-data", "typing-extensions"]
 kernel = ["ipykernel"]
+matplotlib = ["matplotlib"]
 nbconvert = ["nbconvert"]
 nbformat = ["nbformat"]
 notebook = ["ipywidgets", "notebook"]
@@ -2662,57 +2663,6 @@ files = [
 ]
 
 [[package]]
-name = "unsloth"
-version = "2024.3"
-description = "2-5X faster LLM finetuning"
-optional = false
-python-versions = ">=3.9"
-files = []
-develop = false
-
-[package.extras]
-colab = ["unsloth[cu121]"]
-colab-ampere = ["flash-attn", "ninja", "packaging", "unsloth[colab-ampere-torch220]"]
-colab-ampere-torch211 = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu121onlytorch211]", "unsloth[huggingface]"]
-colab-ampere-torch220 = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu121onlytorch220]", "unsloth[huggingface]"]
-colab-new = ["datasets (>=2.16.0)", "numpy", "psutil", "sentencepiece", "tqdm", "transformers (>=4.38.2)", "tyro", "wheel (>=0.42.0)"]
-colab-no-deps = ["accelerate (>=0.26.1)", "bitsandbytes", "peft (>=0.7.1)", "trl (>=0.7.9)", "xformers"]
-colab-torch211 = ["bitsandbytes", "unsloth[cu121onlytorch211]", "unsloth[huggingface]"]
-colab-torch220 = ["bitsandbytes", "unsloth[cu121onlytorch220]", "unsloth[huggingface]"]
-conda = ["unsloth[huggingface]"]
-cu118 = ["bitsandbytes", "unsloth[cu118only]", "unsloth[huggingface]"]
-cu118-ampere = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu118only]", "unsloth[huggingface]"]
-cu118-ampere-torch211 = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu118onlytorch211]", "unsloth[huggingface]"]
-cu118-ampere-torch220 = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu118onlytorch220]", "unsloth[huggingface]"]
-cu118-torch211 = ["bitsandbytes", "unsloth[cu118onlytorch211]", "unsloth[huggingface]"]
-cu118-torch212 = ["bitsandbytes", "unsloth[cu118onlytorch212]", "unsloth[huggingface]"]
-cu118-torch220 = ["bitsandbytes", "unsloth[cu118onlytorch220]", "unsloth[huggingface]"]
-cu118only = ["xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.22.post7%2Bcu118-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.22.post7%2Bcu118-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.22.post7%2Bcu118-cp39-cp39-manylinux2014_x86_64.whl"]
-cu118onlytorch211 = ["xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.23%2Bcu118-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.23%2Bcu118-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.23%2Bcu118-cp39-cp39-manylinux2014_x86_64.whl"]
-cu118onlytorch212 = ["xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.23.post1%2Bcu118-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.23.post1%2Bcu118-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.23.post1%2Bcu118-cp39-cp39-manylinux2014_x86_64.whl"]
-cu118onlytorch220 = ["xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.24%2Bcu118-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.24%2Bcu118-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu118/xformers-0.0.24%2Bcu118-cp39-cp39-manylinux2014_x86_64.whl"]
-cu121 = ["bitsandbytes", "unsloth[cu121only]", "unsloth[huggingface]"]
-cu121-ampere = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu121only]", "unsloth[huggingface]"]
-cu121-ampere-torch211 = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu121onlytorch211]", "unsloth[huggingface]"]
-cu121-ampere-torch220 = ["bitsandbytes", "flash-attn", "ninja", "packaging", "unsloth[cu121onlytorch220]", "unsloth[huggingface]"]
-cu121-torch211 = ["bitsandbytes", "unsloth[cu121onlytorch211]", "unsloth[huggingface]"]
-cu121-torch212 = ["bitsandbytes", "unsloth[cu121onlytorch212]", "unsloth[huggingface]"]
-cu121-torch220 = ["bitsandbytes", "unsloth[cu121onlytorch220]", "unsloth[huggingface]"]
-cu121only = ["xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.22.post7-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.22.post7-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.22.post7-cp39-cp39-manylinux2014_x86_64.whl"]
-cu121onlytorch211 = ["xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.23-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.23-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.23-cp39-cp39-manylinux2014_x86_64.whl"]
-cu121onlytorch212 = ["xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.23.post1-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.23.post1-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.23.post1-cp39-cp39-manylinux2014_x86_64.whl"]
-cu121onlytorch220 = ["xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.24-cp310-cp310-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.24-cp311-cp311-manylinux2014_x86_64.whl", "xformers @ https://download.pytorch.org/whl/cu121/xformers-0.0.24-cp39-cp39-manylinux2014_x86_64.whl"]
-huggingface = ["accelerate (>=0.26.1)", "datasets (>=2.16.0)", "numpy", "peft (>=0.7.1)", "psutil", "sentencepiece", "tqdm", "transformers (>=4.38.2)", "trl (>=0.7.9)", "tyro", "wheel (>=0.42.0)"]
-kaggle = ["unsloth[huggingface]"]
-kaggle-new = ["bitsandbytes", "unsloth[huggingface]"]
-
-[package.source]
-type = "git"
-url = "https://github.com/unslothai/unsloth.git"
-reference = "HEAD"
-resolved_reference = "a68aebc1fa17755ffbcdafc9239e7ca37ab21657"
-
-[[package]]
 name = "urllib3"
 version = "2.2.1"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -2963,4 +2913,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "2e3fb8a7595eb7df3ab6dabbce30bee7c7ee0ba6e455a859f44ea33b3bb77065"
+content-hash = "9a92edecb25faf682eac4fe7126e6e71e93fb17a43098297da410f77ed555c5d"

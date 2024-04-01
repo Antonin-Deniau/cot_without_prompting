@@ -1,4 +1,5 @@
 from datasets import load_dataset, interleave_datasets
+from datasets import Dataset
 
 EXAMPLES_AMOUNT = 15_000
 
@@ -14,6 +15,12 @@ rag_dataset = load_dataset(
     "neural-bridge/rag-dataset-12000",
     split="train[:{}]".format(EXAMPLES_AMOUNT),
 )
+if type(rag_dataset) != Dataset:
+    raise ValueError("Expected a dataset, not a dataset dictionary")
+if type(open_orca) != Dataset:
+    raise ValueError("Expected a dataset, not a dataset dictionary")
+if type(orca_math) != Dataset:
+    raise ValueError("Expected a dataset, not a dataset dictionary")
 
 # Limit and only take the necessary columns
 orca_math = orca_math.select_columns("question")
@@ -40,7 +47,6 @@ def format_prompt(example):
 
 
 rag_dataset = rag_dataset.map(format_prompt)
-
 rag_dataset = rag_dataset.select_columns("question")
 
 # Load the datasets
