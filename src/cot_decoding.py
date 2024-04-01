@@ -75,7 +75,7 @@ def use_cot_utils(
             probabilities.append((topk_probability, token, continue_logits))
 
         # Sort the results by the average probability difference
-        probabilities.sort(key=lambda x: x[1], reverse=True)
+        probabilities.sort(key=lambda x: x[0], reverse=True)
 
         # Get the top decoding path
         top_logits = probabilities[0][2]
